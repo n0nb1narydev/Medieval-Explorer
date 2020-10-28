@@ -12,6 +12,9 @@ public class UI_Manager : MonoBehaviour
     public bool inventoryIsOpen = false;
     [SerializeField]
     private Text _goldText;
+    [SerializeField]
+    private AudioSource _coins;
+   
 
     private
     // Start is called before the first frame update
@@ -52,5 +55,6 @@ public class UI_Manager : MonoBehaviour
     public void PickupGold(int currentGold)
     {
         _goldText.text = "" + currentGold;
+        _coins.Play();
     }
 }

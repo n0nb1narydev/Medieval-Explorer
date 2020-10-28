@@ -10,6 +10,8 @@ public class UI_Manager : MonoBehaviour
     [SerializeField]
     private GameObject _pickupText;
     public bool inventoryIsOpen = false;
+    [SerializeField]
+    private Text _goldText;
 
     private
     // Start is called before the first frame update
@@ -47,8 +49,8 @@ public class UI_Manager : MonoBehaviour
         _pickupText.SetActive(false);
     }
 
-    public void PickupGold()
+    public void PickupGold(int currentGold)
     {
-        
+        _goldText.text = "" + currentGold;
     }
 }

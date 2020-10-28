@@ -6,11 +6,13 @@ using UnityEngine;
 public class Items : MonoBehaviour
 {
     private UI_Manager ui_manager;
+    private Player player;
 
     // Start is called before the first frame update
     void Start()
     {
         ui_manager = GameObject.Find("Canvas").GetComponent<UI_Manager>();
+        player = GameObject.Find("MyPlayer").GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -23,6 +25,13 @@ public class Items : MonoBehaviour
         if (other.tag == "Player")
         {
             ui_manager.PickupTextOn();
+            
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                ui_manager.PickupGold(GoldAmount());
+                Destroy(this.gameObject);
+                ui_manager.PickupTextOff();
+            }
         }
     }
     void OnTriggerExit(Collider other) 
@@ -31,6 +40,13 @@ public class Items : MonoBehaviour
         {
             ui_manager.PickupTextOff();
         }
+    }
+
+    public int GoldAmount()
+    {
+        int randomAmt = Random.Range(10, 51);
+        player.goldCount += randomAmt;
+        return player.goldCount;
     }
 
 }

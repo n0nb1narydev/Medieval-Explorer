@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     private float _gravity = 1f;
     private float _yVelocity;
     private UI_Manager ui_manager;
+    [SerializeField]
+    public int goldCount = 0;
+
     // Start is called before the first frame update
     void Start()
     {

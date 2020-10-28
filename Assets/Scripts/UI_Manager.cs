@@ -7,6 +7,8 @@ public class UI_Manager : MonoBehaviour
 {
     [SerializeField]
     private GameObject _inventory;
+    [SerializeField]
+    private GameObject _pickupText;
     public bool inventoryIsOpen = false;
 
     private
@@ -33,7 +35,20 @@ public class UI_Manager : MonoBehaviour
         {
             _inventory.SetActive(true);
             inventoryIsOpen = true;
+        }
+    }
+
+    public void PickupTextOn()
+    {
+        _pickupText.SetActive(true);
+    }
+        public void PickupTextOff()
+    {
+        _pickupText.SetActive(false);
+    }
+
+    public void PickupGold()
+    {
         
-}
     }
 }

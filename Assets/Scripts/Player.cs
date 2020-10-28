@@ -52,4 +52,6 @@ public class Player : MonoBehaviour
         _cc.Move(velocity * Time.deltaTime);
     }
 
+    
+
 }

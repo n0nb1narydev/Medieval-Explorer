@@ -14,13 +14,18 @@ public class UI_Manager : MonoBehaviour
     private Text _goldText;
     [SerializeField]
     private AudioSource _coins;
-   
+    [SerializeField]
+    private AudioSource _bag;
+    [SerializeField]
+    private Text _questObjective;
+    [SerializeField]
+    private Text _questProgress;
 
-    private
+    private Player player;
     // Start is called before the first frame update
     void Start()
     {
-
+        player = GameObject.Find("MyPlayer").GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -35,13 +40,30 @@ public class UI_Manager : MonoBehaviour
         {
             _inventory.SetActive(false);
             inventoryIsOpen = false;
+            _bag.Play();
         }
+
         else
         {
             _inventory.SetActive(true);
             inventoryIsOpen = true;
+            _bag.Play();
         }
     }
+
+    public void FirstQuest(int currentGold)
+    {
+        if (currentGold <= 150)
+        {
+            _questObjective.text = "Collect at least 150 gold coins.";
+            _questProgress.text = currentGold + "/150";
+        }
+        else
+        {
+            _questProgress.text = "COMPLETE!";
+        }
+    }
+
 
     public void PickupTextOn()
     {

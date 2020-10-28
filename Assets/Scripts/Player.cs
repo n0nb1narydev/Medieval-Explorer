@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     private UI_Manager ui_manager;
     [SerializeField]
     public int goldCount = 0;
+    [SerializeField]
+    private AudioSource _steps;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +27,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ui_manager.FirstQuest(goldCount);
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.visible = true;
@@ -37,6 +40,11 @@ public class Player : MonoBehaviour
         }
         
         MovePlayer();
+
+        if (_cc.isGrounded==true && _cc.velocity.magnitude > 2f && _steps.isPlaying == false)
+        {
+            _steps.Play();
+        }
     }
 
     private void MovePlayer() 

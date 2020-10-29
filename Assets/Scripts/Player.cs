@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public int goldCount = 0;
     [SerializeField]
     private AudioSource _steps;
+    public int armor = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -28,10 +29,15 @@ public class Player : MonoBehaviour
     void Update()
     {
         ui_manager.FirstQuest(goldCount);
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && Cursor.visible == false)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && Cursor.visible == true)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         if (Input.GetKeyDown(KeyCode.B))

@@ -22,6 +22,7 @@ public class UI_Manager : MonoBehaviour
     private Text _questProgress;
 
     private Player player;
+    private bool questComplete = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,18 +52,6 @@ public class UI_Manager : MonoBehaviour
         }
     }
 
-    public void FirstQuest(int currentGold)
-    {
-        if (currentGold <= 150)
-        {
-            _questObjective.text = "Collect at least 150 gold coins.";
-            _questProgress.text = currentGold + "/150";
-        }
-        else
-        {
-            _questProgress.text = "COMPLETE!";
-        }
-    }
 
 
     public void PickupTextOn()
@@ -79,4 +68,33 @@ public class UI_Manager : MonoBehaviour
         _goldText.text = "" + currentGold;
         _coins.Play();
     }
+
+    public void FirstQuest(int currentGold)
+    {
+        if (currentGold <= 150)
+        {
+            _questObjective.text = "Collect at least 150 gold coins.";
+            _questProgress.text = currentGold + "/150";
+        }
+        else
+        {
+            _questProgress.text = "COMPLETE!";
+            questComplete = true;
+        }
+    }
+
+    // public void SecondQuest(bool armorFound)
+    // {
+    //     if (armorFound == false)
+    //     {
+    //         _questObjective.text = "Find 3 pieces of armor.";
+    //         _questProgress.text = currentArmor + "/3";
+    //         questComplete = false;
+    //     }
+    //     else
+    //     {
+    //         _questProgress.text = "COMPLETE!";
+    //         questComplete = true;
+    //     }
+    // }
 }
